@@ -3,6 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 
+const {executeQuery} = require('./helpers.js');
+
 const app = express();  
 
 const port = process.env.PORT || 3000;
@@ -11,6 +13,18 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors());
+
+app.get('/', (req, res) => {
+    res.json({ 
+        message: 'Server is Running'
+    });
+});
+
+app.get('/test-connection', async (req,res) =>{
+    const sql = "SELECT * FROM student";
+    const [students, error] = await executeQuery(sql);
+    res.json(students);
+});
 
 app.listen(port, () => {
     console.log(`Serveris veikia Port ${port}`);
