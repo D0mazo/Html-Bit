@@ -14,9 +14,9 @@ POST  http://localhost:3000/api/students/
 Content-Type: application/json
 
 {
-    "firstname": "Dominykas",
-    "lastname": "Simaitis",
-    "email": "DOmSim@bit.lt",
+    "firstname": "Jonas",
+    "lastname": "Jurgaitis",
+    "email": "JJ@bit.lt",
     "created": "2024-01-27"
 }
 ### update student info
@@ -24,9 +24,9 @@ PUT  http://localhost:3000/api/students/3
 Content-Type: application/json
 
 {
-    "firstname": "dziaugiuosi",
-    "lastname": "Bit`e",
-    "email": "dziaugsmas@bit.lt",
+    "firstname": "Margiris",
+    "lastname": "Liutka",
+    "email": "MargirisLiutka@bit.lt",
     "created": "2024-01-26"
 }
 
