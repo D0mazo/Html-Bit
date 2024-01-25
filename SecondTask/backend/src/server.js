@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const studentRouter = require('./routes/studentRoutes.js');
 
 const {executeQuery} = require('./helpers.js');
 
@@ -19,6 +20,9 @@ app.get('/', (req, res) => {
         message: 'Server is Running'
     });
 });
+
+//isisdedame routus is router file
+app.use('/api', studentRouter);
 
 app.get('/test-connection', async (req,res) =>{
     const sql = "SELECT * FROM student";
