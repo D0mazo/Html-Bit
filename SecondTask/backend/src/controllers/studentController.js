@@ -55,24 +55,24 @@ module.exports = {
     update: async (req, res, next) => {
         
             const { id } = req.params;
-            const { } = req.body;
-
-            // SQl update
-            const sql = "UPDATE student SET /* set fields and placeholders */ WHERE id=?";
-
+            const { firstname, lastname, email } = req.body;
+    
+            // SQL
+            const sql = "UPDATE student SET firstname=?, lastname=?, email=? WHERE id=?";
+    
             // ivykdyti
-            const [result, error] = await executeQuery(sql, [firstname, secondname, email, id]);
-
-            //Klaidu tikrinimas
+            const [result, error] = await executeQuery(sql, [firstname, lastname, email, id]);
+    
+            // tikrinti klaidas
             if (error) {
-                return next(error); 
+                return next(error);
             }
-
-            // Tikrinti ar gerai
-            if (result.affectedRows > 0) {
-                res.status(200).json({ message: "Update successful" });
-            } else {
+    
+            // Check if the update was successful
+            if (result.affectedRows !== 1) {
                 res.status(404).json({ message: "Student not found" });
+            } else {
+                res.status(200).json({ message: "Update successful" });
             }
        
     },

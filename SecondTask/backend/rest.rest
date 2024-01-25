@@ -14,13 +14,22 @@ POST  http://localhost:3000/api/students/
 Content-Type: application/json
 
 {
-    "firstname": "verkiau",
-    "lastname": "Bit`e",
-    "email": "Verkiau@bit.lt",
-    "created": "2024-01-25"
+    "firstname": "Dominykas",
+    "lastname": "Simaitis",
+    "email": "DOmSim@bit.lt",
+    "created": "2024-01-27"
 }
 ### update student info
-PUT  http://localhost:3000/api/students/2
+PUT  http://localhost:3000/api/students/3
+Content-Type: application/json
+
+{
+    "firstname": "dziaugiuosi",
+    "lastname": "Bit`e",
+    "email": "dziaugsmas@bit.lt",
+    "created": "2024-01-26"
+}
+
 
 ### Delete student
 DELETE  http://localhost:3000/api/students/1
