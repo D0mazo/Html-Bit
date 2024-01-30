@@ -1,13 +1,15 @@
 const mysql = require('mysql2/promise');
-const { dbConfig } = require('./config');
+
+const {dbConfig} = require('./config');
 
 async function executeQuery(sql, arguments = []) {
     let connection;
+
     try {
-        // Creating a connection to the database
+        // Sukuriame prisijungima i DB
         connection = await mysql.createConnection(dbConfig);
 
-        // Executing the provided SQL query
+        // Pateiktos uzklausos vykdymas
         const [rows] = await connection.execute(sql, arguments);
 
         return [rows, null];
@@ -18,6 +20,9 @@ async function executeQuery(sql, arguments = []) {
             connection.end();
         }
     }
+
 }
 
-module.exports = { executeQuery };
+module.exports = {
+    executeQuery
+}

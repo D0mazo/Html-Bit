@@ -1,36 +1,38 @@
+### Check main page
 GET http://localhost:3000/
 
-### Check DB connection 
+
+### Check DB connection
 GET http://localhost:3000/test-connection
 
-### Get all Students
+
+### Get all students
 GET http://localhost:3000/api/students
+
 
 ### Get single student
 GET http://localhost:3000/api/students/2
 
-### Create single student
-POST  http://localhost:3000/api/students/
+
+### POST create student
+POST http://localhost:3000/api/students/
 Content-Type: application/json
 
 {
-    "firstname": "Jonas",
-    "lastname": "Jurgaitis",
-    "email": "JJ@bit.lt",
-    "created": "2024-01-27"
+  "firstname": "Moe",
+  "lastname": "Deo",
+  "email": "moe@bit.lt"
 }
-### update student info
-PUT  http://localhost:3000/api/students/3
+
+### Update single student
+PUT http://localhost:3000/api/students/1
 Content-Type: application/json
 
 {
-    "firstname": "Margiris",
-    "lastname": "Liutka",
-    "email": "MargirisLiutka@bit.lt",
-    "created": "2024-01-26"
+  "firstname": "Vardenis",
+  "lastname": "Pavardenis",
+  "email": "vardenis@bit.lt"
 }
 
-
-### Delete student
-DELETE  http://localhost:3000/api/students/1
-
+### DELETE single student
+DELETE http://localhost:3000/api/students/5

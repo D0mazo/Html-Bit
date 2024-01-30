@@ -1,24 +1,21 @@
 const express = require('express');
 
 const studentRouter = express.Router();
-const studentController = require('../controllers/studentController.js');
+const studentController = require('../controllers/studentController');
 
-// visi GET /api/students studentai
+// GET /api/students Gauti visa sarasa
 studentRouter.get('/students', studentController.all);
 
-//GET viena pagal ID /api/students:id
+// GET /api/students/:id Gauti viena studenta pagal ID
 studentRouter.get('/students/:id', studentController.single);
 
-//POST irasyti studenta /api/students
+// POST  /api/students Irasyti studenta
 studentRouter.post('/students', studentController.create);
 
-//PUT  /api/students/:id duomenu atnaujinimas
+// PUT /api/students/:id Studento duomenu atnaujinimas pagal nurodyta jo id
 studentRouter.put('/students/:id', studentController.update);
 
-//DELETE /api/students/:id istrinimas pagal id
+// DELETE /api/student/:id Studento istrinimas pagal nurodyta jo id
 studentRouter.delete('/students/:id', studentController.delete);
-
-
-
 
 module.exports = studentRouter;

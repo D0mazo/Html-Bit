@@ -2,34 +2,38 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const studentRouter = require('./routes/studentRoutes.js');
+const { mainErrorHandler } = require('./middleware');
+const studentRouter = require('./routes/studentRoutes');
 
-const {executeQuery} = require('./helpers.js');
+const {executeQuery} = require('./helpers');
 
-const app = express();  
+const app = express();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000
 
-// Middlewares
+// Include Middlewares
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors());
 
 app.get('/', (req, res) => {
-    res.json({ 
-        message: 'Server is Running'
-    });
+   res.json({
+      message: 'Server Is Running'
+   });
 });
 
-//isisdedame routus is router file
+// Isidedame routus is router failu
 app.use('/api', studentRouter);
 
-app.get('/test-connection', async (req,res) =>{
-    const sql = "SELECT * FROM student";
-    const [students, error] = await executeQuery(sql);
-    res.json(students);
+app.get('/test-connection', async (req, res) => {
+   const sql = "SELECT * FROM student";
+   const [students, error] = await executeQuery(sql);
+
+   res.json(students);
 });
 
+app.use(mainErrorHandler);
+
 app.listen(port, () => {
-    console.log(`Serveris veikia Port ${port}`);
+   console.log(`Server is listening on port ${port}`)
 });
